@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录界面</title>
+	<link rel="stylesheet" href="../public/css/index.css">
+</head>
+<body>
+	<form action="http://10.25.160.6:8989/login" method="post">
+		<h1>Login</h1>
+		<div class="box">
+			<input type="text" placeholder="请输入用户名" name="user" class="user" maxlength="8">
+			<input type="password" name="pass" class="pass" placeholder="请输入密码">
+			<input type="submit" value="登录" class="login">
+		</div>
+		<% if(user){ %>
+			<h3>没有该用户，请您先注册</h3>
+		<% } %>
+		<a href="<%= url %>sign" class="sign-btn">注册</a>
+	</form>
+	<script src="../public/js/jquery-1.11.1.js"></script>
+	<script>
+		$('.login').click(function(event) {
+			let user=$('.user').val();
+			let pass=$('.pass').val();
+			if (user!=''&&pass!='') {
+				$.ajax({
+					url:'http://10.25.160.6:8989/login',
+					method:'post',
+					dataType:'json',
+					data:$('form').serialize(),
+					success:function(data){
+						console.log(data)
+					}
+				})
+			}else{
+			 	$('h3').html('用户名和密码不能为空!')
+			 }
+		});
+	</script>
+</body>
+</html>

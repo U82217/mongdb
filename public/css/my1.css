@@ -1,0 +1,122 @@
+.home{
+	background:#f60;
+}
+html,body{
+	height:100%;
+}
+.mycotainer{
+	padding-top: 70px;
+}
+.mycarousel{
+	height:300px;
+}
+
+.item img{
+	display: block;
+	width: 100%;
+	height:100%;
+}
+span.cbtn{
+	color: #fff;
+	font-size: 30px;
+	position: absolute;
+	top: 50%;
+	transform:translateY(-50%);
+}
+ul{
+	margin-top: 20px;
+}
+ul li{
+	width: 100%;
+	margin-top: 10px;
+	
+	border-bottom: 1px solid #ccc;
+	font-size: 16px;
+	background: #FFF;
+	list-style: none;
+	padding:20px;
+	margin: 0px auto;
+	border-radius: 5px;
+	color: #333;
+	overflow: hidden;		
+}
+ul li div{
+	width: 540px;
+	float: left;
+	line-height: 30px;
+}
+ul li span{
+	margin-left: 20px;
+	display: inline-block;
+	font-size: 18px;
+	text-align: center;
+	float: right;
+	cursor: pointer;
+	display:block;
+	height: 100%;
+	float: right;
+}
+#ol li p{
+	color: #ccc;
+	font-size: 13px;
+	line-height: 16px;
+	margin-top: 20px;
+	float: left;	
+}
+.input{
+	margin-top: 40px;
+}
+.wrap{
+	width: 600px;
+	height: 145px;
+	background: #fff;
+	margin: 20px auto 0px;
+	border-radius: 5px;		
+	padding: 15px 10px 10px;
+	overflow: hidden;
+}
+.wrap .input{
+	box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.3) inset;
+	position: relative;
+	border: none;
+	width：100%;
+	height: 78px;
+	margin: 4px 0 0;
+	padding: 5px;
+}
+.wrap .input textarea{
+
+	height: 78px;
+	font-size: 14px;
+	word-wrap: break-word;
+	line-height: 18px;
+	overflow: hidden;
+	border: 0px;
+	outline: none;
+	width: 100%;
+	color: #808080;
+}
+.send button{
+	float: right;
+	margin-top: 10px;
+	background: #ff8140;
+	border: 1px solid #f77c3d;
+	color: #fff;
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.25);
+	padding: 0 10px 0 10px;
+	display: inline-block;
+	border-radius: 2px;
+	height: 24px;
+	line-height: 25px;
+	font-size: 14px;
+	min-width: 40px;
+	text-align: center;
+	outline: none;	
+	width: 82px;
+	height: 30px;
+	cursor: pointer;
+}
+.send button:hover{
+	background: #f7671d;
+	border: 1px solid #f06923;
+}

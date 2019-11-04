@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+	<link rel="stylesheet" href="../public/css/bootstrap.css">
+	<link rel="stylesheet" href="../public/css/my.css">
+	<link rel="stylesheet" href="../public/css/msg.css">
+</head>
+<body>
+	<div class="box">
+		<div class="box1">
+			<h2><span class="username"><%= user %></span>个人博客主页</h2>
+			<div class="box2">
+				<span class="home">首页</span>
+				<span class="msg">留言</span>
+				<span class="lis-btn">列表</span>
+				<span>娱乐</span>
+				<span>成长</span>
+			</div>
+			<div class="btns">
+				<span class="chang">修改密码</span>
+				<span class="exit">退出</span>		
+			</div>
+		</div>
+	</div>
+	<div class="mycontainer">
+		<div class="container mybox">
+			<div>
+				<div class="top">
+					<span class="msg-text">留言</span>
+					<div>
+						<span>主页&gt;</span>
+						<span>留言&gt;</span>
+					</div>
+				</div>
+				<div class="text-box">
+					<textarea name="" id="" cols="111" rows="6" class="my-textarea"></textarea>
+					<div class="line">
+						<span class="common">评论</span>
+						<span class="number"><b>10</b>人参与，<b>20</b>条评论</span>
+					</div>
+					<div class="new-content">
+						<h4>最新评论</h4>
+						<ul class="new-common">
+							<li></li>
+						</ul>
+						<div class="per-eval">
+							<img src="../public/images/bg1.jpg" alt="">
+							<div>
+								<div class="users">
+									<span class="usern">super</span>
+									<span class="date">2019-10-29</span>
+								</div>
+								<p>单页面应用（SPA）就是指只有一个主页面的应用，浏览器一开始要加载所有必须的HTML，js,css,所有的页面内容都包含在这个所谓的主页面中</p>
+							</div>
+						</div>
+						<div class="per-eval">
+							<img src="../public/images/bg2.jpg" alt="">
+							<div>
+								<div class="users">
+									<span class="usern">幸运儿</span>
+									<span class="date">2019-10-29</span>
+								</div>
+								<p>单页面应用（SPA）就是指只有一个主页面的应用，浏览器一开始要加载所有必须的HTML，js,css,所有的页面内容都包含在这个所谓的主页面中</p>
+							</div>
+						</div>
+						<div class="per-eval">
+							<img src="../public/images/bg2.jpg" alt="">
+							<div>
+								<div class="users">
+									<span class="usern">那年的努力</span>
+									<span class="date">2019-10-29</span>
+								</div>
+								<p>单页面应用（SPA）就是指只有一个主页面的应用，浏览器一开始要加载所有必须的HTML，js,css,所有的页面内容都包含在这个所谓的主页面中</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="myaside">
+				<h4>频道点击排行</h4>
+				<div class="media mymedia">
+				  <div class="media-left">
+				    <a href="#">
+				      <img class="media-object my-img" src="../public/images/bg.jpg" alt="...">
+				    </a>
+				  </div>
+				  <div class="media-body">
+				    <h4 class="media-heading">vue+echarts 动态绘制图表以及异步加载数据</h4>
+				   		2019-10-01   100次阅读
+				  </div>
+				</div>
+				<div class="media mymedia">
+				  <div class="media-left">
+				    <a href="#">
+				      <img class="media-object my-img" src="../public/images/bg1.jpg" alt="...">
+				    </a>
+				  </div>
+				  <div class="media-body">
+				    <h4 class="media-heading">vue+echarts 动态绘制图表以及异步加载数据</h4>
+				   		2019-10-01   100次阅读
+				  </div>
+				</div>
+				<div class="media mymedia">
+				  <div class="media-left">
+				    <a href="#">
+				      <img class="media-object my-img" src="../public/images/bg2.jpg" alt="...">
+				    </a>
+				  </div>
+				  <div class="media-body">
+				    <h4 class="media-heading">vue+echarts 动态绘制图表以及异步加载数据</h4>
+				   		2019-10-01   100次阅读
+				  </div>
+				</div>
+				<div class="media mymedia">
+				  <div class="media-left">
+				    <a href="#">
+				      <img class="media-object my-img" src="../public/images/bg1.jpg" alt="...">
+				    </a>
+				  </div>
+				  <div class="media-body">
+				    <h4 class="media-heading">vue+echarts 动态绘制图表以及异步加载数据</h4>
+				   		2019-10-01   100次阅读
+				  </div>
+				</div>
+				<div class="media mymedia">
+				  <div class="media-left">
+				    <a href="#">
+				      <img class="media-object my-img" src="../public/images/bgf.jpg" alt="...">
+				    </a>
+				  </div>
+				  <div class="media-body">
+				    <h4 class="media-heading">vue+echarts 动态绘制图表以及异步加载数据</h4>
+				   		2019-10-01   100次阅读
+				  </div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+		
+	<script src="../public/js/jquery-1.11.1.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+
+	<script>
+		
+
+		$('.mymedia' ).hover(function() {
+			$(this).addClass('add');
+			$(this).children('.media-body').children('h4').addClass('add1')
+		}, function() {
+			$(this).removeClass('add');
+			$(this).children('.media-body').children('h4').removeClass('add1')
+		});
+
+
+		// 退出登录
+		$('.exit').click(function(event) {
+				$.ajax({
+					url:'http://10.25.160.6:8989/logout',
+					method:'get',
+					dataType:'json',
+					success:function(res){
+						console.log(res)
+						if (res.msg==1) {
+							location.href="http://10.25.160.6:8989/"
+						}
+					}
+				})
+			});
+		// 修改密码
+		$('.chang').click(function(event) {
+				$.ajax({
+					url:'http://10.25.160.6:8989/change',
+					method:'get',
+					dataType:'json',
+					success:function(res){
+						console.log(res)
+						if (res.msg==1) {
+							location.href="http://10.25.160.6:8989/mychange"
+						}
+					}
+				})
+			});
+		
+		// 列表
+		   $('.lis-btn').click(function(event) {
+				$.ajax({
+					url:'http://10.25.160.6:8989/myList',
+					method:'get',
+					dataType:'json',
+					success:function(res){
+						console.log(res)
+						if (res.msg==1) {
+							location.href="http://10.25.160.6:8989/list"
+						}
+					}
+				})
+			});
+
+		   // 首页
+		$('.home').click(function(event) {
+				$.ajax({
+					url:'http://10.25.160.6:8989/myHome',
+					method:'get',
+					dataType:'json',
+					success:function(res){
+						console.log(res)
+						if (res.msg==1) {
+							location.href="http://10.25.160.6:8989/my"
+						}
+					}
+				})
+			});
+			
+
+		   // 聊天室
+		   let socket=io()
+			$('textarea').keydown(function(event){
+				if (event.keyCode==13) {
+					socket.emit('send',{msg:$(this).val(),user:$('.username').html()})
+				}
+			});
+
+			// chat事件 emit('chat')执行mychat事件
+			socket.on('mychat',(msg)=>{
+				let tag=$('<li></li>');
+				tag.html(`${msg.user}说：${msg.msg}`)
+				if (msg.user==$('.username').html()) {
+					tag.addClass('right')
+				}
+				$('ul').prepend(tag)
+				console.log(msg)
+			})
+
+	</script>
+</body>
+</html>

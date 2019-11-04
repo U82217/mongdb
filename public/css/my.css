@@ -1,0 +1,158 @@
+
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	background:#f1f1f1;
+
+}
+h1{
+	color:#333;
+}
+span{
+	color:#f60;
+}
+.box{
+	width:100%;
+	height:50px;
+	line-height:50px;
+	background:#2c2c2c;
+	position: fixed;
+	top:0;
+	left: 0;
+}
+h2{
+	margin-top: 0;
+	line-height:50px;
+	color:#fff;
+	font-weight:bold;
+}
+.box1{
+	margin-left: 100px;
+	width:1200px;
+	display:flex;
+	justify-content:space-between;
+}
+.box2{
+	margin-left:-260px;
+	width:430px;
+	display:flex;
+	justify-content:space-around;
+}
+.box2 span{
+	display:inline-block;
+	padding:0 24px;
+	font-size: 16px;
+	color:#fff;
+	cursor:pointer;
+	height:50px;
+	line-height:50px;
+}
+
+.btns{
+	display:flex;
+	width:160px;
+	justify-content:space-between;
+}
+.exit{
+	cursor:pointer;
+	display:inline-block;
+	padding:0 24px;
+	text-decoration:none;
+	color:#fff;
+	text-align:center;
+}
+.exit:hover{
+	background:#f60;
+}
+.chang{
+	cursor:pointer;
+	text-align:center;
+}
+.input-box{
+	display:flex;
+	margin:10px auto;
+	width:1000px;
+	justify-content:space-between;
+}
+input{
+	height:30px;
+	line-height:30px;
+}
+button{
+	width:80px;
+	line-height:30px;
+}
+.add{
+	background:skyblue;
+}
+.check{
+	background:orange;
+}
+
+.tab{
+	width:1000px;
+	margin:20px auto;
+	font-weight:bold;
+	border-collapse:collapse;
+	/* 边框合并，把相邻边框合并为一条 */
+}
+td{
+	width:250px;
+	height:34px;
+	line-height:34px;
+	text-align:center;
+	border:1px solid gray;
+}
+.head{
+	background:#a7a7c9;
+	color:#fff;
+}
+.pro-id,.price{
+	width:80px;
+}
+td input{
+	border:none;
+	outline:none;
+	background: none;
+	width:100%;
+	height:100%;
+}
+.btn-box{
+	width:360px;
+	display:flex;
+	border:1px solid #333;
+	margin:100px auto;
+}
+.btn-box span{
+	width:60px;
+	line-height:30px;
+	cursor:pointer;
+	text-align:center;
+	display:inline-block;
+}
+.pre{
+	border-right:1px solid #ccc;
+}
+.lisbox{
+	margin-bottom: 0;
+	width: 240px;
+	height: 30px;
+	display: flex;
+	justify-content: space-around;
+}
+.lisbox li{
+	list-style: none;
+	padding-left:1px;
+	width: 60px;
+	border-right: 1px solid #ccc;
+	cursor: pointer;
+	text-align: center;
+	line-height: 30px;
+}
+
+.current{
+	background:#ccc;
+	color:#fff;
+}

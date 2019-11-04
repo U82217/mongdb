@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改密码</title>
+	<link rel="stylesheet" href="../public/css/my.css">
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		html,body{
+			height:100%;
+		}
+		body{
+			width:100%;
+			background:url('../public/images/bgf.jpg') no-repeat;
+			background-size:100% 100%;
+			overflow:hidden;
+		}
+		
+		form{
+			width:260px;
+			margin:120px auto 0;
+			display:flex;
+			padding:60px 30px 30px;
+			flex-direction:column;
+			background:#eee;
+			border-radius:14px;
+			position:relative;
+			overflow:hidden;
+			box-shadow: 0px -3px 10px 0px rgba(0,0,0,0.3);
+		}
+		input{
+			display:inline-block;
+			height:36px;
+			line-height:36px;
+			margin:10px 0;
+			outline:none;
+			border:none;
+			padding-left:10px;
+			border:1px solid rgb(131, 198, 215);
+			border-radius:6px;
+		}
+		.confirm,.cancle{
+			display:inline-block;
+			width:80px;
+			border-radius:8px;
+			line-height:40px;
+			cursor:pointer;
+			text-align:center;
+			color:#fff;
+		}
+		.confirm{
+			background:#f60;
+		}
+		.cancle{
+			background:rgb(131,198,215);
+		}
+		.sure-btn{
+			width:100%;
+			display:flex;
+			margin-top:20px;
+			justify-content:space-around;
+		}
+		h3{
+			width:320px;
+			text-align:center;
+			line-height:50px;
+			background:#f60;
+			color:#fff;
+			position:absolute;
+			top:0;
+			left:0;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="box1">
+			<h2><span><%= user %></span>个人博客主页</h2>
+			<div class="box2">
+				<span class="home">首页</span>
+				<span class="message">留言</span>
+				<span class="lis-btn">列表</span>
+				<span>娱乐</span>
+				<span>成长</span>
+			</div>
+			<div class="btns">
+				<span class="chang">修改密码</span>
+				<span class="exit">退出</span>		
+			</div>
+		</div>
+	</div>
+	<div class="form-box">
+		<form action="#">
+			<h3>密码修改</h3>
+			<input type="password" placeholder="原密码" class="old" name="oldpass">
+			<input type="password"  placeholder="新密码" class="new" name="newpass">
+			<input type="password" placeholder="确认密码" class="repass">
+			<div class="sure-btn">
+				<span class="confirm"> 确认</span>
+				<span class="cancle"> 取消</span>
+			</div>
+			<b></b>
+		</form>
+	</div>
+	<script src="../public/js/jquery-1.11.1.js"></script>
+	<script>
+		$('.confirm').click(function(event) {
+			let repass=$('.repass').val();
+			let newpass=$('.new').val();
+			if (newpass!=''&&repass!=''&&repass==newpass) {
+				$.ajax({
+					url: 'http://10.25.160.6:8989/confirm',
+					type: 'post',
+					dataType: 'json',
+					data:$('form').serialize(),
+					success:function (data) {
+						console.log(data)
+						console.log(data.msg)
+						if (data.msg==1) {
+							$('b').html("修改成功！")
+							setTimeout(((a)=>{
+								location.href="http://10.25.160.6:8989/"
+							}),3000)
+						}else{
+							$('b').html("修改错误，请重新修改！")
+						}
+					}
+				})
+			}
+		});
+		// 退出登录
+		$('.exit').click(function(event) {
+				$.ajax({
+					url:'http://10.25.160.6:8989/logout',
+					method:'get',
+					dataType:'json',
+
+					success:function(res){
+						console.log(res)
+						if (res.msg==1) {
+							location.href="http://10.25.160.6:8989/"
+						}
+					}
+				})
+			});
+		// 首页
+		$('.home').click(function(event) {
+				$.ajax({
+					url:'http://10.25.160.6:8989/myHome',
+					method:'get',
+					dataType:'json',
+					success:function(res){
+						console.log(res)
+						if (res.msg==1) {
+							location.href="http://10.25.160.6:8989/my"
+						}
+					}
+				})
+			});
+		// 列表
+		   $('.lis-btn').click(function(event) {
+				$.ajax({
+					url:'http://10.25.160.6:8989/myList',
+					method:'get',
+					dataType:'json',
+					success:function(res){
+						console.log(res)
+						if (res.msg==1) {
+							location.href="http://10.25.160.6:8989/list"
+						}
+					}
+				})
+			});
+		   // 留言
+		   $('.message').click(function(event) {
+				$.ajax({
+					url:'http://10.25.160.6:8989/myMsg',
+					method:'get',
+					dataType:'json',
+					success:function(res){
+						console.log(res)
+						if (res.msg==1) {
+							location.href="http://10.25.160.6:8989/msg"
+						}
+					}
+				})
+			});
+	</script>
+</body>
+</html>

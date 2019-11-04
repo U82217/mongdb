@@ -1,0 +1,111 @@
+
+*{
+	margin:0;
+	padding:0;
+}
+html,body{
+	height:100%;
+}
+body{
+	width:100%;
+	background:url('../images/bg2.jpg') no-repeat;
+	background-size:100% 100%;
+}
+h1{
+	color:#fff;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+form{
+	width:350px;
+	height:400px;
+	position:relative;
+	top:50%;
+	left:50%;
+	transform:translate(-50%, -50%);
+	padding:20px 10px;
+	background:#eee;
+	text-align:center;
+	background: rgba(255, 255, 255, 0.5);
+}
+.box{
+	margin:20px 0 0;
+	display:flex;
+	flex-direction:column;
+}
+input{
+	border:none;
+	outline:none;
+	border-radius:20px;
+}
+.user,.pass{
+	  border: 0;
+      background: none;
+      display: block;
+      margin: 20px auto;
+      text-align: center;
+      border: 2px solid rgb(131, 198, 215);
+      padding: 14px 10px;
+      width: 260px;
+      outline: none;
+      color: #fff;
+      border-radius: 24px;
+      transition: 0.25s;
+}
+.user:focus,.pass:focus{
+	width:260px;
+	border-color: #2ecc71;
+}
+.user1,.pass1{
+	border-color: #2ecc71;
+}
+.user1:focus,.pass1:focus{
+	width:260px;
+	border-color: rgb(131,198,215);
+}
+.login,.sign-btn{
+	 width:100px;
+	 margin:10px 0px 0 50px;
+	 text-align: center;    
+	 transition: 0.25s;
+	 cursor: pointer;
+	 border-radius: 24px; 
+	 color: #fff;
+}
+.login{
+  padding: 12px 30px;
+  border: 0;
+  width:100px;
+  background: none;
+  border: 2px solid #2ecc71;
+  outline: none;
+}
+.sign{
+	display:inline-block;
+	width:40px;
+ 	padding: 10px 30px;
+	text-decoration:none;
+	margin:20px 0px 0 40px;
+	border-radius:24px;
+	border:2px solid #2ecc71;
+}
+.sign-btn{
+	width:40px;
+ 	padding: 10px 30px;
+	text-decoration:none;
+	border:2px solid rgb(131, 198, 215);
+	position:absolute;
+	right:54px;
+	top:58%;
+
+}
+.login:hover,.sign:hover {
+  background: #2ecc71;
+}
+.sign-btn:hover {
+  background: rgb(131, 198, 215);
+}
+h3{
+	color:red;
+	margin-top:50px;
+}

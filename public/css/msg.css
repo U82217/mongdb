@@ -1,0 +1,151 @@
+.msg{
+	background:#f60;
+}
+html,body{
+	height:100%;
+}
+
+.mycontainer{
+	padding-top: 80px;
+	height:100%;
+}
+.container span{
+	color: #333;
+}
+.mybox{
+	display:flex;
+	justify-content:space-between;
+}
+.top{
+	display: flex;
+	padding: 0 20px;
+	height: 50px;
+	line-height: 50px;
+	width: 800px;
+	background:#fff;
+	justify-content:space-between;
+}
+.top span{
+	color:#666;
+}
+.msg-text{
+	font-size: 20px;
+}
+.text-box{
+	margin-top: 20px;
+}
+.text-box li{
+	list-style: none;
+}
+.my-textarea{
+	resize:none;
+	border:1px solid #e74851;
+	border-radius: 4px;
+	padding-left: 6px;
+}
+.line{
+	width:800px;
+	margin-top:20px;
+	position:relative;
+	height:40px;
+	line-height:40px;
+	border-bottom: 1px solid #e74851;
+}
+.common{
+	position:absolute;
+	top:13px;
+	left: 0;
+	width:50px;
+	height:30px;
+	line-height:30px;
+	background:#fff;
+	border:1px solid #e74851;
+	text-align: center;
+	border-radius:5px;
+	border-bottom:none;
+}
+.number{
+	position:absolute;
+	right:0;
+	bottom:0;
+	
+}
+.line .number{
+	color:#f40;
+}
+.number b{
+	font-size:20px;
+}
+.new-content h4{
+	margin-top:30px;
+	color:#e74851;
+	padding-left:14px;
+	border-left: 3px solid red;
+}
+.per-eval{
+	width:800px;
+	margin:10px 0 30px;
+	display:flex;
+	justify-content:space-between;
+}
+.per-eval img{
+	width:60px;
+	height:60px;
+	margin-right: 20px;
+	border-radius:50%;
+}
+.users{
+	display:flex;
+	justify-content:space-between;
+	margin-bottom: 12px;
+}
+span.usern{
+	color:#e74851;
+}
+span.date{
+	color:#999;
+	margin-right:10px;
+}
+.new-common{
+	margin-top:20px;
+	width:100%;
+}
+.new-common li{
+	width:800px;
+	padding:20px 0 20px 20px;
+
+}
+.new-common li:nth-child(1){
+	padding-top:0;
+	padding-bottom: 0;
+}
+.my-img{
+	width:80px;
+	height:60px;
+	border-radius:6px;
+}
+.myaside{
+	background:#fff;
+	margin-left: 16px;
+	border:1px solid #eee;
+	border-radius:4px;
+	height:600px;
+}
+.myaside>h4{
+	color:#666;
+	padding:0 16px;
+}
+.mymedia{
+	margin-top:0;
+	padding:16px;
+	border-top: 1px solid #ccc;
+}
+.mymedia h4{
+	font-size:16px;
+}
+.add{
+	border-left:2px solid #81c53f;
+}
+.add1{
+	color:#fff;
+}

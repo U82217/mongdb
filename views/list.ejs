@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+	<link rel="stylesheet" href="../public/css/bootstrap.css">
+	<link rel="stylesheet" href="../public/css/my.css">
+	<style>
+		.lis-btn{
+			background:#f60;
+		}
+		.input-box{
+			padding-top:80px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="box1">
+			<h2><span><%= user %></span>个人博客主页</h2>
+			<div class="box2">
+				<span class="home">首页</span>
+				<span class="message">留言</span>
+				<span class="lis-btn">列表</span>
+				<span>娱乐</span>
+				<span>成长</span>
+			</div>
+			<div class="btns">
+				<span class="chang">修改密码</span>
+				<span class="exit">退出</span>		
+			</div>
+		</div>
+	</div>
+
+	<div class="input-box">
+			<div>
+				<input type="text" class="pro-id" placeholder="id">
+				<input type="text" placeholder="请输入商品名称" class="pro-name">
+				<input type="text" class="price" placeholder="商品价格">
+				<button class="add">新增</button>
+			</div>
+			<div>
+				<input type="text" class="inp2">
+				<button class="check">查询</button>
+			</div>
+		</div>
+		<div class="tab-box">
+			<table class="tab">
+				<thead>
+					<tr class="head">
+						<td>商品id</td>
+						<td>商品名称</td>
+						<td>商品价格</td>
+						<td>年份</td>
+						<td>操作</td>
+						<td>编辑</td>
+					</tr>
+				</thead>
+			</table>
+		</div>
+
+		<div class="btn-box">
+			<span class="pre">上一页</span>
+			<ul class="lisbox">
+			</ul>
+			<span class="next">下一页</span>
+		</div>
+	<script src="../public/js/jquery-1.11.1.js"></script>
+	<script>
+		$('.btn-box span' ).hover(function() {
+			$(this).css('color','red');
+		}, function() {
+			$(this).css('color','');
+		});
+
+		// 退出登录
+		$('.exit').click(function(event) {
+				$.ajax({
+					url:'http://10.25.160.6:8989/logout',
+					method:'get',
+					dataType:'json',
+
+					success:function(res){
+						console.log(res)
+						if (res.msg==1) {
+							location.href="http://10.25.160.6:8989/"
+						}
+					}
+				})
+			});
+		// 修改密码
+		$('.chang').click(function(event) {
+				$.ajax({
+					url:'http://10.25.160.6:8989/change',
+					method:'get',
+					dataType:'json',
+					success:function(res){
+						console.log(res)
+						if (res.msg==1) {
+							location.href="http://10.25.160.6:8989/mychange"
+						}
+					}
+				})
+			});
+
+		// 首页
+		$('.home').click(function(event) {
+				$.ajax({
+					url:'http://10.25.160.6:8989/myHome',
+					method:'get',
+					dataType:'json',
+					success:function(res){
+						console.log(res)
+						if (res.msg==1) {
+							location.href="http://10.25.160.6:8989/my"
+						}
+					}
+				})
+			});
+
+		// 留言
+		   $('.message').click(function(event) {
+				$.ajax({
+					url:'http://10.25.160.6:8989/myMsg',
+					method:'get',
+					dataType:'json',
+					success:function(res){
+						console.log(res)
+						if (res.msg==1) {
+							location.href="http://10.25.160.6:8989/msg"
+						}
+					}
+				})
+			});
+
+			// 添加商品
+			$('.add').click(function(event) {
+				$.ajax({
+					url: 'http://10.25.160.6:8989/addList',
+					type: 'get',
+					dataType: 'json',
+					data: {
+						name:$('.pro-name').val(),
+						price:$('.price').val()
+					},
+					success:function(data){
+						console.log(data)
+						$('table tbody').children().eq(9).remove()
+							let tag=$('<tr></tr>')
+							tag.html(`<td>${data[0]._id}</td>
+							<td><input type="text" value="${data[0].name}" disabled ></td>
+							<td><input type="text" value="${data[0].price}" disabled ></td>
+							<td>${data[0].date}</td>
+							<td onclick="del(this)">删除</td>
+							<td onclick="edit(this)">编辑</td>`)
+							$('table').prepend(tag);
+						
+					}
+				})	
+			});
+			// 获取列表数据
+			let n=0;
+			$.ajax({
+				url: 'http://10.25.160.6:8989/getList',
+				type: 'GET',
+				dataType: 'json',
+				data: {
+						price:$('td').eq(2).html()
+						},
+				success:function(res){
+					console.log(res.length%10);
+					// 如果列表中数据的长度求余有余数，则页数n=(长度/10条)+1
+					if (res.length%10) {
+						n=parseInt(res.length/10)+1;
+						console.log(n)
+					}else{
+						n=parseInt(res.length/10)
+					}
+					for(var i=1;i<=n;i++){
+						console.log(1)
+						let tag=$('<li onclick="page(this)"></li>')
+						if (i==1) {
+							tag.addClass('current')
+						}
+						tag.html(i);
+						$('.lisbox').append(tag)
+					}
+					res.forEach((item,index)=>{
+						if (index>=10) return;
+						// 创建标签
+						let tag=$('<tr></tr>');
+						tag.html(`<td>${item._id}</td>
+								<td><input type="text" value="${item.name}" disabled ></td>
+								<td><input type="text" value="${item.price}" disabled ></td>
+								<td>${item.date}</td>
+								<td onclick="del(this)">删除</td>
+								<td onclick="edit(this)">编辑</td>`)
+							$('table').append(tag)
+					})
+
+				}
+			
+			})
+			function page(a){
+				$(a).addClass('current').siblings().removeClass('current');
+				$.ajax({
+					url: 'http://10.25.160.6:8989/pageList',
+					type: 'GET',
+					dataType: 'json',
+					data: {page: $(a).html()},
+					success:function(res){
+						$('tbody').html('');
+						res.forEach((item,index)=>{
+							// 创建标签
+						let tag=$('<tr></tr>');
+						tag.html(`<td>${item._id}</td>
+								<td><input type="text" value="${item.name}" disabled ></td>
+								<td><input type="text" value="${item.price}" disabled ></td>
+								<td>${item.date}</td>
+								<td onclick="del(this)">删除</td>
+								<td onclick="edit(this)">编辑</td>`)
+							$('table').append(tag)
+						})
+					}
+				})
+				
+			}
+			// 查询
+			$('.check').click(function(event) {
+				$.ajax({
+					url: 'http://10.25.160.6:8989/checkList',
+					type: 'POST',
+					dataType: 'json',
+					data: {
+						name:$('.inp2').val()
+						},
+					success:function(data){
+						$('tbody').html('');
+						console.log(data)
+						for(let i in data){
+							console.log(i)
+							var tag=$('<tr></tr>');
+							tag.html(`<td>${data[i]._id}</td>
+								<td><input type="text" value="${data[i].name}" disabled ></td>
+								<td><input type="text" value="${data[i].price}" disabled ></td>
+								<td>${data[i].date}</td>
+								<td onclick="del(this)">删除</td>
+								<td onclick="edit(this)">编辑</td>`)
+							$('table').append(tag)
+						}
+					}
+				
+				})
+			
+			})
+
+
+			// 删除
+			function del(a){
+				$.ajax({
+					url: 'http://10.25.160.6:8989/delList',
+					type: 'POST',
+					dataType: 'json',
+					data: {
+						id:$(a).siblings().eq(0).html()
+					},
+					success:function(res){
+						if (res.msg==1) {
+							$(a).parent().remove();
+						}
+
+						$.ajax({
+							url:'http://10.25.160.6:8989/getOne',
+							type:'GET',
+							dataType:'json',
+							success:function(res){
+								let tag=$('<tr></tr>')
+								tag.html(`<td>${res[0]._id}</td>
+								<td><input type="text" value="${res[0].name}" disabled ></td>
+								<td><input type="text" value="${res[0].price}" disabled ></td>
+								<td>${res[0].date}</td>
+								<td onclick="del(this)">删除</td>
+								<td onclick="edit(this)">编辑</td>`)
+								$('table').append(tag);
+							}
+						})
+
+					}
+				})
+			}
+			
+			// 编辑
+			function edit(b){
+				if ($(b).html()=="编辑") {
+					$(b).html('确认');
+					$(b).siblings().children().removeAttr('disabled');
+				}else{
+					$(b).html('编辑')
+					$(b).siblings().children().attr('disabled','true');
+					$.ajax({
+						url: 'http://10.25.160.6:8989/editList',
+						type: 'POST',
+						dataType: 'json',
+						data: {
+							name:$(b).siblings().eq(1).children().val(),
+							price:$(b).siblings().eq(2).children().val(),
+							id:$(b).siblings().eq(0).html()
+						},
+						success:function(){}
+					})
+				}		
+				
+			}
+
+
+			$('.pre').click(function(event) {
+			    n--;
+			    if (n<0) {
+			    	alert("没有上一页了哦！")
+			    	n=0;
+			    }
+			    	$('li').eq(n).addClass('current').siblings().removeClass('current');
+				$.ajax({
+					url: 'http://10.25.160.6:8989/prePage',
+					type: 'post',
+					dataType: 'json',
+					data: {num: n},
+					success:function(data){
+						$('tbody').html('');
+						console.log(data)
+						for(let i in data){
+							var tag=$('<tr></tr>');
+							tag.html(`<td>${data[i]._id}</td>
+								<td><input type="text" value="${data[i].name}" disabled ></td>
+								<td><input type="text" value="${data[i].price}" disabled ></td>
+								<td>${data[i].date}</td>
+								<td onclick="del(this)">删除</td>
+								<td onclick="edit(this)">编辑</td>`)
+							$('table').append(tag)
+						}
+					}
+				})
+				
+			});
+
+			// 下一页
+			$('.next').click(function(event) {
+				n++;
+				if (n>3) {
+					alert("后面已经没有内容了")
+					n=3;
+				}
+				$('li').eq(n).addClass('current').siblings().removeClass('current');
+				$.ajax({
+					url: 'http://10.25.160.6:8989/nextPage',
+					type: 'post',
+					dataType: 'json',
+					data: {num: n},
+					success:function(data){
+						$('tbody').html('');
+						console.log(data);
+						for(let i in data){
+							var tag=$('<tr></tr>');
+							tag.html(`<td>${data[i]._id}</td>
+								<td><input type="text" value="${data[i].name}" disabled ></td>
+								<td><input type="text" value="${data[i].price}" disabled ></td>
+								<td>${data[i].date}</td>
+								<td onclick="del(this)">删除</td>
+								<td onclick="edit(this)">编辑</td>`)
+							$('table').append(tag)
+						}
+					}
+				})
+				
+			});
+
+
+	</script>
+</body>
+</html>

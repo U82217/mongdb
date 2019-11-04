@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册界面</title>
+	<link rel="stylesheet" href="../public/css/index.css">
+
+	
+</head>
+<body>
+	<form action="http://10.25.160.6:8989/sign" method="get" onsubmit="">
+		<h2>注册界面</h2>
+		<div class="box">
+			<input type="text" placeholder="请输入用户名" name="user" class="user user1" maxlength="8">
+			<input type="password" name="pass" class="pass pass1" placeholder="请输入密码">
+			<span class="sign">注册</span>
+		</div>
+		
+			<h3></h3>
+	
+		
+		<a href="<%= url %>" class="sign-btn">登录</a>
+
+	</form>
+	<script src="../public/js/jquery-1.11.1.js"></script>
+	<script>
+		$('.sign').click(function(event) {
+			let user=$('.user').val();
+			let pass=$('.pass').val();
+			if (user!=''&&pass!='') {
+				$.ajax({
+		          url:'http://10.25.160.6:8989/sign1',
+		          type:'get',
+				  dataType:'json',
+		          data:$('form').serialize(),
+		          success:function (data) {
+		          	console.log(data.msg)
+		           	if(data.msg==1){
+		           		location.href="http://10.25.160.6:8989/"
+		           	}else{
+		           		$('h3').html('该用户已经被注册')
+		           	}
+		        }
+				})
+			 }else{
+			 	$('h3').html('用户名和密码不能为空!')
+			 }
+		});
+	</script>
+</body>
+</html>
